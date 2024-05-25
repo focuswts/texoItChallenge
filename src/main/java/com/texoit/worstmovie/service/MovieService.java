@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface MovieService {
 
-
     List<MovieEntity> getMovies();
+
+    List<MovieEntity> getWinnerMovies();
 
     MovieEntity getMovieById(Long id);
 
@@ -16,4 +17,5 @@ public interface MovieService {
     MovieEntity updateMovieById(Long movieId, MovieEntity movie);
 
     void deleteMovie(Long id);
+
 }

@@ -1,6 +1,8 @@
 package com.texoit.worstmovie.controller;
 
+import com.texoit.worstmovie.dto.AwardIntervalDTO;
 import com.texoit.worstmovie.entity.MovieEntity;
+import com.texoit.worstmovie.service.AwardService;
 import com.texoit.worstmovie.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +23,26 @@ import java.util.List;
 public class MovieController {
 
     private final MovieService movieService;
+    private final AwardService awardService;
 
     @GetMapping
     public ResponseEntity<List<MovieEntity>> getAllMovies() {
         List<MovieEntity> movies = movieService.getMovies();
         return ResponseEntity.ok(movies);
     }
+
+    @GetMapping("/winner")
+    public ResponseEntity<List<MovieEntity>> getAllWinnerMovies() {
+        List<MovieEntity> movies = movieService.getWinnerMovies();
+        return ResponseEntity.ok(movies);
+    }
+
+    @GetMapping("/interval")
+    public ResponseEntity<AwardIntervalDTO> getInterval() {
+        AwardIntervalDTO awards = awardService.getAwardsInterval();
+        return ResponseEntity.ok(awards);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<MovieEntity> getMovieById(@PathVariable Long id) {

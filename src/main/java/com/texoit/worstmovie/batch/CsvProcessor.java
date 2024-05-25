@@ -16,8 +16,15 @@ public class CsvProcessor implements ItemProcessor<CsvColumnsDTO, CsvColumnsResp
     @Override
     public CsvColumnsResponseDTO process(CsvColumnsDTO item) throws Exception {
 
+        String winner = item.getWinner();
+
+        if (winner.equals("yes")) {
+            item.setWinner("true");
+        }
+
         MovieEntity movie = MovieEntity.builder()
                 .title(item.getTitle())
+                .year(Integer.parseInt(item.getYear()))
                 .winner(Boolean.parseBoolean(item.getWinner()))
                 .build();
 
@@ -37,7 +44,7 @@ public class CsvProcessor implements ItemProcessor<CsvColumnsDTO, CsvColumnsResp
     private static List<ProducerEntity> getProducers(String[] producers) {
         return Arrays.stream(producers)
                 .map(producer -> ProducerEntity.builder()
-                        .name(producer)
+                        .name(producer.replaceFirst("^\\s+", ""))
                         .build())
                 .toList();
     }

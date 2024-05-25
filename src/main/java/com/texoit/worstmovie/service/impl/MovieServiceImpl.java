@@ -29,6 +29,16 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public List<MovieEntity> getWinnerMovies() {
+        log.info("MovieServiceImpl.getWinnerMovies - start");
+
+        List<MovieEntity> winnerMovies = movieRepository.findByWinnerTrueOrderByYearDesc();
+
+        log.info("MovieServiceImpl.getWinnerMovies - end");
+        return winnerMovies;
+    }
+
+    @Override
     public MovieEntity getMovieById(Long id) {
         log.info("MovieServiceImpl.getMovieById - start: id={}", id);
 
