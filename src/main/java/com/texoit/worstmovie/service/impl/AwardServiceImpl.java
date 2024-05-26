@@ -25,7 +25,6 @@ public class AwardServiceImpl implements AwardService {
 
     private final MovieService movieService;
 
-    @Transactional
     @Override
     public AwardIntervalDTO getAwardsInterval() {
         log.info("AwardServiceImpl.getAwardsInterval - start");
