@@ -10,7 +10,7 @@ A API Worst Movie Awards gerencia filmes, produtores e estúdios, e calcula inte
 - **Utilizar o endpoint /movies/interval para pegar os valores do objetivo do desafio.**
   
 - **Caso desejar utilizar as validacoes dos testes de integracao em conjunto com seu proprio CSV basta alterar o valor do file.input dentro do application-test.yml seguindo o padrao ex: data/nomedoarquivo.csv**
-
+- **O teste responsavel por fazer a validacao do endpoint /interval fica no MovieControllerTest.ShouldGetIntervals
 
 ## Endpoints
 
